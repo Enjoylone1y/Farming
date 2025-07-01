@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rigidbody;
     private PlayerInputSettings playerInput;
+    private PlayerAnimation playerAnimation;
 
     private Vector2 velocity = Vector2.zero;
 
@@ -30,8 +31,10 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        playerAnimation = GetComponent<PlayerAnimation>();
         playerInput = new PlayerInputSettings();
-        playerInput.Game.Action.started += OnPlayerAction;
+        playerInput.Game.Action.started += OnPlayerActionStart;
+        playerInput.Game.Action.canceled += OnPlayerActionEnd;
     }
 
     private void OnEnable()
@@ -39,9 +42,19 @@ public class PlayerController : MonoBehaviour
         playerInput.Game.Enable();
     }
 
-    private void OnPlayerAction(InputAction.CallbackContext context)
+    private void OnPlayerActionStart(InputAction.CallbackContext context)
     {
-        Console.WriteLine("OnPlayerAction");
+        // 动作
+        Debug.Log("OnPlayerActionStart");
+        _playerAction = CharactorAction.UseTool;
+        playerAnimation.PlayerAction(CharactorAction.UseTool);
+    }
+
+    private void OnPlayerActionEnd(InputAction.CallbackContext context)
+    {
+        // 动作
+        Debug.Log("OnPlayerActionEnd");
+        _playerAction = CharactorAction.None;
     }
 
     private void FixedUpdate()
@@ -73,9 +86,6 @@ public class PlayerController : MonoBehaviour
         {
             _playerDirection = CharactorDirection.Down;
         }
-
-        // 动作
-        
     }
 
     private void OnDisable()

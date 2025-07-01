@@ -14,6 +14,7 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly string TRIGGER_TOOL = "tool";
     private static readonly string TRIGGER_REAP = "reap";
     private static readonly string TRIGGER_WATERING = "water";
+    private static readonly string TRIGGER_ATTACK = "attack";
 
     private List<Animator> animators = new List<Animator>();
 
@@ -42,25 +43,28 @@ public class PlayerAnimation : MonoBehaviour
                 animator.SetFloat(VELOCITY_X, rigidbody.velocity.x);
                 animator.SetFloat(VELOCITY_Y, rigidbody.velocity.y);
             }
-            // 动作
-            if (playerController.PlayerAction != CharactorAction.None)
+            
+        }
+    }
+
+
+    public void PlayerAction(CharactorAction action)
+    {
+        // 动作
+        if (playerController.PlayerAction != CharactorAction.None)
+        {
+            string key = action switch
             {
-                if (playerController.PlayerAction == CharactorAction.Pull)
-                {
-                    animator.SetTrigger(TRIGGER_PULL);
-                }
-                else if (playerController.PlayerAction == CharactorAction.Pull)
-                {
-                    animator.SetTrigger(TRIGGER_PULL);
-                }
-                else if (playerController.PlayerAction == CharactorAction.Pull)
-                {
-                    animator.SetTrigger(TRIGGER_PULL);
-                }
-                else if (playerController.PlayerAction == CharactorAction.Pull)
-                {
-                    animator.SetTrigger(TRIGGER_PULL);
-                }
+                CharactorAction.None => "",
+                CharactorAction.Pull => TRIGGER_PULL,
+                CharactorAction.UseTool => TRIGGER_TOOL,
+                CharactorAction.Wattering => TRIGGER_WATERING,
+                CharactorAction.Reap => TRIGGER_REAP,
+                CharactorAction.Attack => TRIGGER_ATTACK,
+            };
+            foreach (Animator animator in animators)
+            {
+                animator.SetTrigger(key);
             }
         }
     }
