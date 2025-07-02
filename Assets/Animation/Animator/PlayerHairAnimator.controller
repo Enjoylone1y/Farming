@@ -204,6 +204,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: pull
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: velocity
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 271184881073439661}
   m_Solo: 0
@@ -276,6 +279,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: tool
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: velocity
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9001733971250153640}
   m_Solo: 0
@@ -495,6 +501,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: reap
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: velocity
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4168006548826360475}
   m_Solo: 0
@@ -901,6 +910,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: water
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: velocity
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6893895719114924667}
   m_Solo: 0

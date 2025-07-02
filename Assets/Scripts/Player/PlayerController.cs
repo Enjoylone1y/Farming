@@ -42,21 +42,7 @@ public class PlayerController : MonoBehaviour
         playerInput.Game.Enable();
     }
 
-    private void OnPlayerActionStart(InputAction.CallbackContext context)
-    {
-        // 动作
-        Debug.Log("OnPlayerActionStart");
-        _playerAction = CharactorAction.UseTool;
-        playerAnimation.PlayerAction(CharactorAction.UseTool);
-    }
-
-    private void OnPlayerActionEnd(InputAction.CallbackContext context)
-    {
-        // 动作
-        Debug.Log("OnPlayerActionEnd");
-        _playerAction = CharactorAction.None;
-    }
-
+   
     private void FixedUpdate()
     {
         // 速度
@@ -69,7 +55,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        // 方向
+          // 方向
         if (velocity.x > 0)
         {
             _playerDirection = CharactorDirection.Right;
@@ -87,6 +73,22 @@ public class PlayerController : MonoBehaviour
             _playerDirection = CharactorDirection.Down;
         }
     }
+
+    // 动作
+    private void OnPlayerActionStart(InputAction.CallbackContext context)
+    {
+        Debug.Log("OnPlayerActionStart");
+        if (velocity.sqrMagnitude > 0) return;
+        _playerAction = CharactorAction.UseTool;
+        playerAnimation.PlayerAction(_playerAction, ToolTypes.Axe);
+    }
+
+    private void OnPlayerActionEnd(InputAction.CallbackContext context)
+    {
+        Debug.Log("OnPlayerActionEnd");
+        _playerAction = CharactorAction.None;
+    }
+
 
     private void OnDisable()
     {

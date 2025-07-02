@@ -42,6 +42,7 @@ public enum ItemTypes
 /// </summary>
 public enum ToolTypes
 {
+    None,
     /// <summary>
     /// 斧头
     /// </summary>
@@ -57,5 +58,19 @@ public enum ToolTypes
     /// <summary>
     /// 水壶
     /// </summary>
-    Kettle,
+    Water,
+    /// <summary>
+    /// 收获工具
+    /// </summary>
+    ReapTool
+}
+
+
+public enum TreeStatus
+{
+    Children,
+    Young,
+    Mature,
+    Complete,
+    Break,
 }
