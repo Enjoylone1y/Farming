@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - NPC
+  - Collectable
+  - Enemy
   - 
   - 
   - 
@@ -38,21 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: BackGround
     uniqueID: 791409313
     locked: 0
   - name: Map
     uniqueID: 2443910125
     locked: 0
-  - name: Tree
-    uniqueID: 2151173685
+  - name: Default
+    uniqueID: 0
     locked: 0
-  - name: Charator
-    uniqueID: 2164513437
-    locked: 0
-  - name: Environment
+  - name: ForeGround
     uniqueID: 1864271537
     locked: 0
