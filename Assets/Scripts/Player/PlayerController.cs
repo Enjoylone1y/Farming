@@ -47,7 +47,8 @@ public class PlayerController : MonoBehaviour
     {
         // ËÙ¶È
         Vector2 v = playerInput.Game.Move.ReadValue<Vector2>();
-        v *= moveSpeed * Time.fixedDeltaTime;
+        if (v.x != 0 && v.y != 0) v *= 0.8f;
+        v *= moveSpeed * Time.deltaTime;
         velocity.Set(v.x, v.y);
         rigidbody.velocity = velocity;
     }
