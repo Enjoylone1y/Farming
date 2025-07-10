@@ -28,6 +28,7 @@ public class PlayerAnimation : MonoBehaviour
 
     [Header("角色动画")]
     public List<Animator> playerAnimators = new List<Animator>();
+    public List<Animator> otherAnimators = new List<Animator>();
 
     [Header("工具动画")]
     public Animator toolAnimator;
@@ -52,6 +53,14 @@ public class PlayerAnimation : MonoBehaviour
         foreach (Animator animator in playerAnimators) {
             animator.SetFloat(VELOCITY, rigidbody.velocity.sqrMagnitude);
             if(rigidbody.velocity.sqrMagnitude != 0)
+            {
+                animator.SetFloat(VELOCITY_X, rigidbody.velocity.x);
+                animator.SetFloat(VELOCITY_Y, rigidbody.velocity.y);
+            }
+        }
+        foreach (Animator animator in otherAnimators)
+        {
+            if (rigidbody.velocity.sqrMagnitude != 0)
             {
                 animator.SetFloat(VELOCITY_X, rigidbody.velocity.x);
                 animator.SetFloat(VELOCITY_Y, rigidbody.velocity.y);
@@ -95,7 +104,7 @@ public class PlayerAnimation : MonoBehaviour
                 ToolTypes.Water => TRIGGER_TOOL_WATER,
                 ToolTypes.ReapTool => TRIGGER_TOOL_REAP,
             };
-            toolAnimator.SetTrigger(key);
+            //toolAnimator.SetTrigger(key);
         }
     }
 }

@@ -27,7 +27,7 @@ public class PlayerPhysicsCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaysCheck();
+        //RaysCheck();
     }
 
     public RaycastHit2D GetRayResult()
